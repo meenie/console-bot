@@ -36,6 +36,9 @@ internals.initBot = function(server, options) {
     });
 
     slack.on('message', function(message) {
+        if (! message) {
+            return;
+        }
 
         var channel = slack.getChannelGroupOrDMByID(message.channel),
             userId = message.user ? message.user : message.message.user,
