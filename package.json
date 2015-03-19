@@ -1,0 +1,40 @@
+{
+  "name": "console-bot",
+  "version": "1.0.0",
+  "description": "Allows savvy developers to chat to a website owner via the browser console.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "foreman start web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:meenie/console-bot.git"
+  },
+  "author": "Cody Lundquist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meenie/console-bot/issues"
+  },
+  "homepage": "https://github.com/meenie/console-bot",
+  "jspm": {
+    "directories": {
+      "baseURL": "public",
+      "lib": "public",
+      "packages": "public/jspm_packages"
+    }
+  },
+  "devDependencies": {
+    "nodemon": "^1.3.7"
+  },
+  "dependencies": {
+    "confidence": "^1.0.0",
+    "glue": "^2.0.0",
+    "good": "^5.1.2",
+    "good-console": "^4.1.0",
+    "hapi": "^8.4.0",
+    "hapio": "^1.1.0",
+    "hoek": "^2.11.1",
+    "joi": "^6.0.8",
+    "slack-client": "^1.4.0"
+  }
+}
