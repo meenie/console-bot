@@ -1,32 +1,35 @@
 import io from 'socket.io-client';
+import {style} from './console-style';
 
 export function init() {
-    var socket = io(),
+    let socket = io(),
         myName;
 
     socket.on('slackMsg', function(data) {
-        console.log(data.name + ':', data.msg);
+        style(data.name, data.msg).then((styledConsole) => {
+            console.log.apply(console, styledConsole);
+        });
     });
 
-    say = function() {
-        return sendMsg.apply(null, arguments);
+    say = (...args) => {
+        return sendMsg.apply(null, args);
     };
 
-    say.toString = function() {
+    say.toString = () => {
         return 'Use this to send messages. For example say("Hi there!")';
     };
 
-    setName = function() {
-        return initChat.apply(null, arguments);
+    setName = (...args) => {
+        return initChat.apply(null, args);
     };
 
-    setName.toString = function() {
+    setName.toString = () => {
         return 'Use this to set your nickname. For example setName("John D.")';
     };
 
-    help = function() {};
+    help = () => {};
 
-    help.toString = function() {
+    help.toString = () => {
         return `Welcome to the ConsoleBot chat system. Below are the commands you can use:
 setName: Set the nickname you want to use for chatting
 say: Send messages to other users`;
