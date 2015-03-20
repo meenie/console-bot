@@ -1,5 +1,3 @@
-var internals = {};
-
 module.exports.register = function(server, options, next) {
     server.plugins.hapio.io.on('connection', function(socket) {
         socket.on('msg', function(data) {

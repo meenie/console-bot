@@ -6,30 +6,13 @@
 </head>
 <body>
 <h1>ConsoleBot</h1>
-<p>To join in the fun, open up your console.  If you want to chat, please first <code>console.initChat('&lt;your name&gt;');</code>
-and then do <code>console.send('&lt;My Message&gt;')</code></p>
-<script src="//cdn.socket.io/socket.io-1.3.4.js"></script>
+<p>To join in the fun, open up your console and type in <code>help</code> and hit enter.</p>
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
 <script>
-    var socket = io(),
-        myName;
-
-    socket.on('slackMsg', function(data) {
-        console.log(data.name + ':', data.msg);
+    System.import('app/index').then(function(module) {
+        module.init();
     });
-
-    console.initChat = function(name) {
-        myName = name;
-        socket.emit('initChat', {name: name});
-    };
-
-    console.send = function(msg) {
-        if (myName === undefined) {
-            throw 'You must use console.initChat("My Name") first.';
-        }
-
-        socket.emit('msg', {name: myName, msg: msg});
-    }
-
 </script>
 </body>
 </html>
